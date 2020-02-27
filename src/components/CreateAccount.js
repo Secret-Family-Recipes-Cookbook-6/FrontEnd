@@ -1,22 +1,19 @@
-// farmer
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-// validating form
+
 const validate = ({ username, password }) => {
 	const errors = {};
 
-	// validating username
 	if (!username) {
 		errors.username = 'Please enter a username';
 	} else if (username.length < 5) {
 		errors.username = 'Your username must have five characters or more';
     }
     
-    // validating password
 	if (!password) {
 		errors.password = 'Please enter a password';
 	} else if (password.length < 5) {
