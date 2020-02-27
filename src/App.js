@@ -5,7 +5,6 @@ import './App.css';
 import LandingPage from './components/LandingPage';
 import CreateAccount from './components/CreateAccount';
 import LogIn from './components/LogIn';
-import LandingPage from './components/LandingPage';
 import Recipes from './components/Recipes';
 
 
