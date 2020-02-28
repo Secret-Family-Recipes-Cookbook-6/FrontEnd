@@ -42,6 +42,7 @@ const LogIn = (props) => {
 					onChange={handleChange}
 					value={credentials.username}
 				/>
+				<br />
 				<label htmlFor='password'>Password: </label>
 				<input
 					type="password"
@@ -50,6 +51,7 @@ const LogIn = (props) => {
 					onChange={handleChange}
 					value={credentials.password}
 				/>
+				<br />
 				<button type="submit">Login</button>
 			</form>
 			{/* <Header />
