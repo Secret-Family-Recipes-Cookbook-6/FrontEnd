@@ -1,15 +1,57 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import Header from './Header';
-import { Formik, Form, Field } from 'formik';
+
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const LogIn = (props) => {
-	const [ error, setError ] = useState('');
+	const [ credentials, setCredentials ] = useState({
+		username: "",
+		password: ""
+	});
 
+	const handleChange = event => {
+		setCredentials({ ...credentials, [event.target.name]: event.target.value })
+	}
+
+	const handleSubmit = event => {
+		event.preventDefault();
+		axiosWithAuth()
+			.post("/login", credentials)
+			.then(response => {
+				console.log("Login: ", response)
+				localStorage.setItem("token", response.data.payload)
+				setCredentials({
+					username: "",
+					password: ""
+				})
+				props.history.push("/protected")
+			})
+			.catch(err => {
+				localStorage.removeItem("token")
+				console.log("Error: ", err)
+			})
+	}
 	return (
 		<div>
-			<Header />
+			<form onSubmit={handleSubmit}>
+				<input
+					type="text"
+					placeholder="Username"
+					name="username"
+					onChange={handleChange}
+					value={credentials.username}
+				/>
+				<input
+					type="password"
+					placeholder="Password"
+					name="pasword"
+					onChange={handleChange}
+					value={credentials.password}
+				/>
+				<button type="submit">Login</button>
+			</form>
+			{/* <Header />
 			<section className='log-in'>
 				<h2>Log In</h2>
 
@@ -58,7 +100,7 @@ const LogIn = (props) => {
 				<Link to='/CreateAccount'>
 					<p>Don't have an accoount? Create an account</p>
 				</Link>
-			</section>
+			</section> */}
 		</div>
 	);
 };
