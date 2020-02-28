@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import Header from './Header';
-
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const LogIn = (props) => {
