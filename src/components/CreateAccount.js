@@ -26,55 +26,7 @@ const validate = ({ username, password }) => {
 const CreateAccount = (props) => {
 	return (
 		<div>
-			<Header />
-			<section className='create-account'>
-				<h2>Create an Account</h2>
 
-				<Formik
-					initialValues={{
-						username : '',
-						password : '',
-					}}
-					onSubmit={(values, tools) => {
-						axiosWithAuth()
-							.post('/LogIn', values)
-							.then((response) => {
-								localStorage.setItem('token', response.data.token);
-								props.history.push('/');
-								tools.resetForm();
-							})
-							.catch((error) => {
-								console.log(error);
-							});
-					}}
-					validate={validate}>
-					{() => {
-						return (
-							<Form className='form' autoComplete='off'>
-								<div className='input-container'>
-									<label htmlFor='username'>User Name</label>
-									<Field name='username' type='text' placeholder='Enter User Name' />
-									<ErrorMessage name='username' component='div' className='error' />
-								</div>
-
-								<div className='input-container'>
-									<label htmlFor='password'>Password</label>
-									<Field name='password' type='password' placeholder='Enter Password' />
-									<ErrorMessage name='password' component='div' className='error' />
-								</div>
-
-								<button className='create-account-button button-spacing' type='submit'>
-									Create Account
-								</button>
-							</Form>
-						);
-					}}
-				</Formik>
-
-				<Link to='/LogIn'>
-					<p>Already have an account? Log in here.</p>
-				</Link>
-			</section>
 		</div>
 	);
 };
