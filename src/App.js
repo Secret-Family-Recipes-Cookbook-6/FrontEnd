@@ -6,16 +6,19 @@ import LogIn from './components/LogIn';
 import Recipes from './components/Recipes';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Header from "./components/Header";
 
 
 
 function App() {
   return (
     <>
+    <Header />
+    
     <Route path='/LandingPage' component={LandingPage}/>
     <Route path='/CreateAccount' component={CreateAccount}/>
-    <Route path='/LogIn' component={LogIn}/>
-    <ProtectedRoute exact path='/protected' component={Recipes}/>
+    <Route exact path='/' component={LogIn}/>
+    <Route path='/Recipes' component={Recipes}/>
     </>
   );
 }
