@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage';
 import CreateAccount from './components/CreateAccount';
@@ -11,14 +11,20 @@ import { secretFamilyContext } from "../src/context/secretFamilyContext";
 
 
 function App() {
+  const [recipe, setRecipe] = useState([{
+    id: "",
+    recipename: ""
+  }])
+
   return (
     <>
-    <secretFamilyContext.Provider >
+    <secretFamilyContext.Provider value={{ recipe, setRecipe }}>
     
     <Header />
     <Route path='/LandingPage' component={LandingPage}/>
     <Route path='/CreateAccount' component={CreateAccount}/>
     <Route exact path='/' component={LogIn}/>
+
     <ProtectedRoute exact path='/protected' component={Recipes}/>
     
     </secretFamilyContext.Provider>
