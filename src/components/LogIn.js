@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-
-import Header from './Header';
-
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const LogIn = (props) => {
@@ -34,7 +31,9 @@ const LogIn = (props) => {
 	}
 	return (
 		<div>
+			
 			<form onSubmit={handleSubmit}>
+				<label htmlFor='username'>User Name: </label>
 				<input
 					type="text"
 					placeholder="Username"
@@ -42,6 +41,8 @@ const LogIn = (props) => {
 					onChange={handleChange}
 					value={credentials.username}
 				/>
+				<br />
+				<label htmlFor='password'>Password: </label>
 				<input
 					type="password"
 					placeholder="Password"
@@ -49,6 +50,7 @@ const LogIn = (props) => {
 					onChange={handleChange}
 					value={credentials.password}
 				/>
+				<br />
 				<button type="submit">Login</button>
 			</form>
 			{/* <Header />
