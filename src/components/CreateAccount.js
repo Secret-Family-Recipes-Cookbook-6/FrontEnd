@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+// import Header from './Header';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
@@ -24,7 +24,7 @@ const validate = ({ username, password }) => {
 const CreateAccount = (props) => {
 	return (
 		<div>
-
+			
 		</div>
 	);
 };
