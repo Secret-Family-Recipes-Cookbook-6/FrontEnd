@@ -6,7 +6,7 @@ import LogIn from './components/LogIn';
 import Recipes from './components/Recipes';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 
 
 
