@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-import Header from './Header';
+import Header from './Header/Header';
 
 const Recipes = () => {
 	const [recipes, setRecipes] = useState([]);

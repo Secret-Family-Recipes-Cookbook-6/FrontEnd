@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './App.css';
-import LandingPage from './components/LandingPage';
-import CreateAccount from './components/CreateAccount';
-import LogIn from './components/LogIn';
+import LandingPage from './components/LandingPage/LandingPage';
+import CreateAccount from './components/CreateAccount/CreateAccount';
+import LogIn from './components/Login/LogIn';
 import Recipes from './components/Recipes';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
+import "./App.css";
 
 
 

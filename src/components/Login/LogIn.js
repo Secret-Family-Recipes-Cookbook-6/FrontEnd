@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import Header from './Header';
+import Header from '../Header/Header';
 
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 const LogIn = (props) => {
 	const [ credentials, setCredentials ] = useState({
