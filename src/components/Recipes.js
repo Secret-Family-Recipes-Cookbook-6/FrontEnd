@@ -7,6 +7,7 @@ const Recipes = props => {
         <div className="recipe" key={recipe.id}>
           <h2>{recipe.title}</h2>
           <p>{recipe.body}</p>
+          <p>{recipe.footer}</p>
         </div>
       ))}
     </div>
