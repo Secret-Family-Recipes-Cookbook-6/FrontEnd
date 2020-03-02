@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 
+
+
+
+
+
+
+import Signup from './components/Signup'
+
 const App = () => {
     const [recipes, setRecipes] = useState([
     {
@@ -11,25 +19,25 @@ const App = () => {
     }
   ]);
 
-  const addNewRecipe = recipe => {
-    const newRecipe = {
-      id: Date.now(), // gives a unique id
-      title: recipe.title, 
-      body: recipe.body, 
-      footer: recipe.footer
-    }; 
-    setRecipes([...recipes, newRecipe])
-  }
+//   const addNewRecipe = recipe => {
+//     const newRecipe = {
+//       id: Date.now(), // gives a unique id
+//       title: recipe.title, 
+//       body: recipe.body, 
+//       footer: recipe.footer
+//     }; 
+//     setRecipes([...recipes, newRecipe])
+//   }
 
-    return (
-        <div className="App">
-            <h1>Family Recipes</h1>
-            <RecipeForm addNewRecipe={addNewRecipe} />
-            <Recipes recipes={recipes} />
+//     return (
+//         <div className="App">
+//             <h1>Family Recipes</h1>
+//             <RecipeForm addNewRecipe={addNewRecipe} />
+//             <Recipes recipes={recipes} />
 
             
-        </div>
-    );
-};
+//         </div>
+//     );
+ };
 
 export default App;
