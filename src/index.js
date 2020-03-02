@@ -1,13 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import Recipes from "./components/Recipes";
+import RecipeForm from "./components/RecipeForm";
+//mimic fetching data from an API
+// import data from "./data";
+import "./App.css";
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('root'));
+function App() {
+ 
+  const [recipes, setRecipes] = useState([
+    {
+      id: 1,
+      title: "Cheese Crackers",
+      body:
+        "2 Cups Of Assorted Cheeses, Grated Generously, Spread Over Crackers", 
+        footer: "Aunt Mary"
+    }
+  ]);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  const addNewRecipe = recipe => {
+    const newRecipe = {
+      id: Date.now(), // gives a unique id
+      title: recipe.title, 
+      body: recipe.body, 
+      footer: recipe.footer
+    }; 
+    setRecipes([...recipes, newRecipe])
+  }
+  return (
+    <div className="App">
+      <h1>Family Recipes</h1>
+      <RecipeForm addNewRecipe={addNewRecipe} />
+      <Recipes recipes={recipes} />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
