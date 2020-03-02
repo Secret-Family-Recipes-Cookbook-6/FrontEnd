@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import "./index.css";
 
 const LogIn = (props) => {
 	const [ credentials, setCredentials ] = useState({
@@ -30,8 +31,7 @@ const LogIn = (props) => {
 			})
 	}
 	return (
-		<div>
-			
+		<div className="recipe-list">
 			<form onSubmit={handleSubmit}>
 				<label htmlFor='username'>User Name: </label>
 				<input
