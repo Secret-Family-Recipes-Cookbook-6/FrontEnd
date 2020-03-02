@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Header from '../Header/Header';
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const LogIn = (props) => {
 	const [ credentials, setCredentials ] = useState({
@@ -17,7 +17,7 @@ const LogIn = (props) => {
 	const handleSubmit = event => {
 		event.preventDefault();
 		axiosWithAuth()
-			.post("/login", credentials)
+			.post("/", credentials)
 			.then(response => {
 				console.log("Login: ", response)
 				localStorage.setItem("token", response.data.payload)
