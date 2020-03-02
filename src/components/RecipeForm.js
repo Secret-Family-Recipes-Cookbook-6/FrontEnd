@@ -6,7 +6,8 @@ const RecipeForm = props => {
     body: "", 
     footer: ""
   });
-  
+
+
   const handleChanges = event => {
     console.log("event", event.target.value);
     setRecipe({ ...recipe, [event.target.name]: event.target.value });

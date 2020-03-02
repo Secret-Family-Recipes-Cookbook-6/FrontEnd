@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import Recipes from "./components/Recipes";
-import RecipeForm from "./components/RecipeForm";
-import "./App.css";
 
 const App = () => {
     const [recipes, setRecipes] = useState([
@@ -29,6 +26,8 @@ const App = () => {
             <h1>Family Recipes</h1>
             <RecipeForm addNewRecipe={addNewRecipe} />
             <Recipes recipes={recipes} />
+
+            
         </div>
     );
 };
