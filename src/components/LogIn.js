@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import "./index.css";
+
 
 const LogIn = (props) => {
 	const [ credentials, setCredentials ] = useState({
