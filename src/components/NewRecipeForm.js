@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { secretFamilyContext } from "../context/secretFamilyContext";
 
+
 const NewRecipeForm = (props) => {
     console.log("NRF props: ", props)
     const { recipe, setRecipe } = useContext(secretFamilyContext)
@@ -27,7 +28,7 @@ const NewRecipeForm = (props) => {
                     footer: ""
                 })
                 setRecipe(response.data)
-                props.history.push("/recipes")
+                props.history.push("/recipes")//change this back to protected when endpoints are set.
             })
     }
 
@@ -46,6 +47,7 @@ const NewRecipeForm = (props) => {
         .then(response => setRecipe(recipe.filter(recipe => recipe.id !== id)))
         .catch(err => console.log("Error", err))
     }
+
         return (
         <div>
         <form className="recipe-list" onSubmit={handleSubmit}>
@@ -73,8 +75,9 @@ const NewRecipeForm = (props) => {
 
             <button type="submit">Add New Recipe</button>
             <br />
-            
-            <button onClick={() => handleDelete(props.recipe.id)}>Delete this recipe!</button>
+            <button onClick={() => {props.history.push(`update-recipe/${props.recipes.id}`)}}>Update this recipe</button>
+            <br />
+            <button onClick={() => handleDelete(props.recipe.id)}>Delete this recipe</button>
             
         </form>
         </div>
