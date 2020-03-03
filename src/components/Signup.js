@@ -7,9 +7,17 @@ const Signup = () => {
         password: ''
     })
 
+    const changeHandler = event => {
+        setCook({
+            ...cook, [event.target.name]: event.target.value
+        })
+    }
+
+    
+
     return (
         <div>
-            <form  onSubmit={submitForm} className='form-container'>
+            <form className='form-container'>
                <input 
                onChange={changeHandler}
                name='name'

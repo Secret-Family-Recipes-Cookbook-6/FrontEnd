@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Signup from './components/Signup'
 import Recipes from "./components/Recipes";
+import RecipeForm from './components/RecipeForm';
 import { secretFamilyContext } from "../src/context/secretFamilyContext";
 import { Route } from "react-router-dom";
 import LogIn from "./components/LogIn";
@@ -27,15 +28,15 @@ const App = () => {
   //   }; 
   //   setRecipe([...recipe, newRecipe])
   // }
- };
+ //};
 
   return (
     <div className="App">
       <h1>Family Recipes</h1>
-      <NewRecipeForm  />
-      <Recipes recipe={recipe} />
+      {/*<NewRecipeForm  />
+      <Recipes recipe={recipe} /> */}
     <secretFamilyContext.Provider value={{ recipe, setRecipe }}>
-    <Route exact path='/signup' component={Signup} />
+   // <Route exact path='/signup' component={Signup} />
     <Route exact path='/' component={LogIn}/>
 
     <ProtectedRoute exact path="/protected" component={RecipeForm} />
@@ -44,6 +45,7 @@ const App = () => {
     </secretFamilyContext.Provider>
     </div>
   );
+} 
 
   
 
