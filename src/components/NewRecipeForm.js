@@ -3,7 +3,8 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { secretFamilyContext } from "../context/secretFamilyContext";
 
 const NewRecipeForm = (props) => {
-    const { recipe, setRecipe} = useContext(secretFamilyContext)
+    console.log(props)
+    const { recipe, setRecipe } = useContext(secretFamilyContext)
     const [addRecipe, setAddRecipe] = useState({
         id: Date.now(),
         title: "",
