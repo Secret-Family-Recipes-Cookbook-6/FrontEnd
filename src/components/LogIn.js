@@ -31,9 +31,9 @@ const LogIn = (props) => {
 			})
 	}
 	return (
-		<div className="recipe-list">
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='username'>User Name: </label>
+		<div>
+			<form className="recipe-list" onSubmit={handleSubmit}>
+				<label className="label" htmlFor='username'>User Name: </label>
 				<input
 					type="text"
 					placeholder="Username"
@@ -52,7 +52,9 @@ const LogIn = (props) => {
 				/>
 				<br />
 				<button type="submit">Login</button>
-                <Link to="/">Don't have an account yet? Register here!</Link>
+				<br />
+                Don't have an account yet?
+				<Link to="/">Register here!</Link>
 			</form>
         </div>
 	);

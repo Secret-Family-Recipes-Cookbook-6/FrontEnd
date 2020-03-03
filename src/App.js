@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Recipes from "./components/Recipes";
+import RecipeForm from "./components/RecipeForm";
 import { secretFamilyContext } from "../src/context/secretFamilyContext";
 import { Route } from "react-router-dom";
 import LogIn from "./components/LogIn";
@@ -11,20 +12,22 @@ const App = () => {
   const [recipe, setRecipe] = useState([{
     id: "",
     title: "",
-    body: "",
+    body: [],
     footer: "" 
   }])
 
   return (
-    <>
+    <div className="App">
     <secretFamilyContext.Provider value={{ recipe, setRecipe }}>
+    <h1 >Family Recipes</h1>
     <Route exact path='/' component={LogIn}/>
 
-    <ProtectedRoute exact path="/protected" component={NewRecipeForm} />
-    <ProtectedRoute exact path='/protected' component={Recipes}/>
+    <Route exact path="/recipeform" component={NewRecipeForm} />
+    <Route exact path='/recipes' component={Recipes}/>
     
     </secretFamilyContext.Provider>
-    </>
+    </div>
+    
   );
 
   //   const [recipes, setRecipes] = useState([
