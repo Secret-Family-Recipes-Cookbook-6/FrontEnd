@@ -36,8 +36,8 @@ const App = () => {
       {/*<NewRecipeForm  />
       <Recipes recipe={recipe} /> */}
     <secretFamilyContext.Provider value={{ recipe, setRecipe }}>
-   // <Route exact path='/signup' component={Signup} />
-    <Route exact path='/' component={LogIn}/>
+   // <Route exact path='/' component={Signup} />
+    <Route exact path='/login' component={LogIn}/>
 
     <ProtectedRoute exact path="/protected" component={RecipeForm} />
     <ProtectedRoute exact path='/protected' component={Recipes}/>
