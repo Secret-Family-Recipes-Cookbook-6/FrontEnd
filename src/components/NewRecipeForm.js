@@ -43,7 +43,7 @@ const NewRecipeForm = (props) => {
   
     const handleDelete = (id) => {
       axiosWithAuth()
-        .delete(`recipes/${id}`)
+        .delete(`/recipes/${id}`)
         .then(response => setRecipe(recipe.filter(recipe => recipe.id !== id)))
         .catch(err => console.log("Error", err))
     }
