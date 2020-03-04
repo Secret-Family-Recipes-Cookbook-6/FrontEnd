@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import './components.css';
 
 const Signup = () => {
     const [cook, setCook ] = useState({
