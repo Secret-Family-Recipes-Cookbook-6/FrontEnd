@@ -17,12 +17,12 @@ const Recipes = props => {
     <div className="recipe-list">
       
         <div className="recipe">
-          <h2>{recipes.title}</h2>
-          <p>{recipes.source}</p>
-          <p>{recipes.ingredients}</p>
-          <p>{recipes.instructions}</p>
-          <p>{recipes.image}</p>
-          <p>{recipes.category}</p>
+        <h2>{props.recipes.title}</h2>
+        <p>{props.recipes.source}</p>
+        <p>{props.recipes.ingredients}</p>
+        <p>{props.recipes.instructions}</p>
+        <p>{props.recipes.image}</p>
+        <p>{props.recipes.category}</p>
         </div>
         
         <button onClick={() => handleDelete(props.recipes.id)}>Delete this recipe</button>
