@@ -7,7 +7,6 @@ const RecipeForm = props => {
   
   const { recipes, setRecipes } = useContext(secretFamilyContext)
   const [recipe, setRecipe] = useState({
-    //id: Date.now(),
     title: "",
     source: "",
     ingredients: "",

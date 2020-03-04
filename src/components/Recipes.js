@@ -6,7 +6,6 @@ const Recipes = props => {
   console.log("Props from Recipes: ", props)
   const { recipes, setRecipes } = useContext(secretFamilyContext)
   const [recipe, setRecipe] = useState({
-    //id: Date.now(),
     title: "",
     source: "",
     ingredients: "",
