@@ -1,16 +1,27 @@
-import React, { useContext } from 'react'; 
-import Recipes from './Recipes'; 
+import React, { useContext, useEffect } from 'react'; 
+import Recipes from './Recipes';
+import { secretFamilyContext } from "../context/secretFamilyContext";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const RecipeList = () => {
-    const { } = useContext(secretFamilyContext)
+    const { recipes, setRecipes } = useContext(secretFamilyContext)
+    useEffect(() => {
+        axiosWithAuth()
+            .get("/recipes")
+            .then(response => {
+                console.log("Recipes: ", response)
+                setRecipes(response.data)
+            })
+    }, [setRecipes])
+
     return (
         <div>
             <h2>Recipe List</h2>
-            {recipe.map(recipeList =>
+            {recipes.map(recipeList =>
                 <Recipes
                 key={recipeList.id}
                 recipe={recipeList}
-                addNewRecipe={addNewRecipe} />
+                 />
             )}
 
         </div>

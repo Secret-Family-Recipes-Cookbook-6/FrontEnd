@@ -3,7 +3,7 @@ import { secretFamilyContext } from "../context/secretFamilyContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const RecipeForm = props => {
-  console.log("RF: ", props)
+  console.log("RecipeForm Props: ", props)
   
   const { recipes, setRecipes } = useContext(secretFamilyContext)
   const [recipe, setRecipe] = useState({
@@ -22,8 +22,8 @@ const RecipeForm = props => {
 
   const submitForm = event => {
     event.preventDefault();
-    // props.addNewRecipe(recipe);
-    // setRecipe({ title: "", body: "", footer: ""});
+    props.addNewRecipe(recipe);
+    //setRecipe({ title: "", body: "", footer: ""});
     axiosWithAuth()
       .post("/recipes", recipe)
       .then(response => {
@@ -34,9 +34,11 @@ const RecipeForm = props => {
           footer: ""
         })
         setRecipes(response)
-        props.history.push("/")
+        props.history.push("/recipes")
       })
+      .catch(err => console.log("Error in RecipeForm", err))
   };
+
     useEffect(() => {
       axiosWithAuth()
         .get("/recipes")
@@ -50,7 +52,7 @@ const RecipeForm = props => {
       axiosWithAuth()
         .delete(`/recipes/${id}`)
         .then(response => setRecipes(recipe.filter(recipe => recipe.id !== id)))
-        .catch(err => console.log("Error: ", err))
+        .catch(err => console.log("Error in Delete Function: ", err))
     }
 
   return (

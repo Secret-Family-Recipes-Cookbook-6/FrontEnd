@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Signup from './components/Signup'
-import Recipes from "./components/Recipes";
+import RecipeList from "./components/RecipeList";
 import RecipeForm from './components/RecipeForm';
 import { secretFamilyContext } from "../src/context/secretFamilyContext";
 import { Route } from "react-router-dom";
@@ -14,7 +14,7 @@ const App = () => {
   const [recipes, setRecipes] = useState([{
     id: "",
     title: "",
-    body: [],
+    body: "",
     footer: "" 
   }])
 
@@ -38,7 +38,7 @@ const App = () => {
     <Route exact path='/login' component={LogIn}/>
       {/* Change to protected Routes once a token is in place */}
     <ProtectedRoute exact path="/protected" component={RecipeForm} />
-    <ProtectedRoute exact path='/protected' component={Recipes}/>
+    <ProtectedRoute exact path='/protected' component={RecipeList}/>
     
     </secretFamilyContext.Provider>
     </div>
