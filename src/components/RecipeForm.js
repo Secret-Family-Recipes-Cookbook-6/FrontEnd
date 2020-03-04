@@ -23,9 +23,22 @@ const RecipeForm = props => {
 
   };
 
+  const addNewRecipe = recipes => {
+    const newRecipe = {
+      id: Date.now(), // gives a unique id
+      title: recipes.title,
+      source: recipes.source,
+      ingredients: recipes.ingredients,
+      instructions: recipes.instructions,
+      image: recipes.image,
+      category: recipes.category
+    }; 
+    setRecipe([...recipe, newRecipe])
+  }
+
   const submitForm = event => {
     event.preventDefault();
-    props.addNewRecipe(recipe);
+    addNewRecipe(recipe);
     //setRecipe({ title: "", body: "", footer: ""});
     axiosWithAuth()
       .post("/recipes", recipe)

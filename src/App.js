@@ -21,18 +21,6 @@ const App = () => {
     category: ""
   }])
 
-
-  // const addNewRecipe = recipes => {
-  //   const newRecipe = {
-  //     id: Date.now(), // gives a unique id
-  //     title: recipes.title, 
-  //     body: recipes.body, 
-  //     footer: recipes.footer
-  //   }; 
-  //   setRecipe([...recipe, newRecipe])
-  // }
- 
-
   return (
     <div className="App">
       <h1>Family Recipes</h1>
