@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { secretFamilyContext } from "../context/secretFamilyContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -44,13 +44,6 @@ const RecipeForm = props => {
       })
       .catch(err => console.log("Error in RecipeForm", err))
     };
-
-    const handleDelete = (id) => {
-      axiosWithAuth()
-        .delete(`/recipes/${id}`)
-        .then(response => setRecipes(recipe.filter(recipe => recipe.id !== id)))
-        .catch(err => console.log("Error in Delete Function: ", err))
-    }
 
   return (
     <form onSubmit={submitForm}>
@@ -110,8 +103,6 @@ const RecipeForm = props => {
       />
 
       <button type="submit">Add Recipe</button>
-      <br />
-      <button onClick={() => handleDelete(props.recipe.id)}>Delete this recipe</button>
     </form>
   );
 };

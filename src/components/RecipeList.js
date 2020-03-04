@@ -21,7 +21,7 @@ const RecipeList = () => {
             {recipes.map(recipeList =>
                 <Recipes
                 key={recipeList.id}
-                recipe={recipeList}
+                recipe={recipes}
                  />
             )}
 
