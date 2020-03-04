@@ -1,7 +1,7 @@
 import React from "react";
 
 const Recipes = props => {
-
+  console.log("Props from Recipes: ", props)
   return (
     <div className="recipe-list">
       {props.recipes.map(recipe => (

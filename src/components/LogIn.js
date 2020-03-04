@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const LogIn = (props) => {
 	const [ credentials, setCredentials ] = useState({
 		username: "",
+		email: "",
 		password: ""
 	});
 
@@ -21,13 +22,14 @@ const LogIn = (props) => {
 				localStorage.setItem("token", response.data.payload)
 				setCredentials({
 					username: "",
+					email: "",
 					password: ""
 				})
-				props.history.push("/protected")
+				props.history.push("/login")
 			})
 			.catch(err => {
 				localStorage.removeItem("token")
-				console.log("Error: ", err)
+				console.log("Login Error: ", err)
 			})
 	}
 	return (
@@ -40,6 +42,15 @@ const LogIn = (props) => {
 					name="username"
 					onChange={handleChange}
 					value={credentials.username}
+				/>
+				<br />
+				<label htmlFor="email">Email Address: </label>
+				<input 
+					type="text"
+					placeholder="Email Address"
+					name="email"
+					onChange={handleChange}
+					value={credentials.email}
 				/>
 				<br />
 				<label htmlFor='password'>Password: </label>
