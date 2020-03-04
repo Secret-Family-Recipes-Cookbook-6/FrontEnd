@@ -14,8 +14,11 @@ const App = () => {
   const [recipes, setRecipes] = useState([{
     id: "",
     title: "",
-    body: "",
-    footer: "" 
+    source: "",
+    ingredients: "",
+    instructions: "",
+    image: "",
+    category: ""
   }])
 
 

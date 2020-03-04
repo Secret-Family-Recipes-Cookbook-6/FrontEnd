@@ -12,6 +12,7 @@ const RecipeList = () => {
                 console.log("Recipes: ", response)
                 setRecipes(response.data)
             })
+            .catch(err => console.log("Error in RecipeList: ", err))
     }, [setRecipes])
 
     return (

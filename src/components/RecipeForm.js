@@ -9,8 +9,11 @@ const RecipeForm = props => {
   const [recipe, setRecipe] = useState({
     id: Date.now(),
     title: "",
-    body: "", 
-    footer: ""
+    source: "",
+    ingredients: "",
+    instructions: "",
+    image: "",
+    category: ""
   });
 
   console.log("Recipe", recipe)
@@ -30,14 +33,17 @@ const RecipeForm = props => {
         console.log("post response", response)
         setRecipe({
           title: "",
-          body: "",
-          footer: ""
+          source: "",
+          ingredients: "",
+          instructions: "",
+          image: "",
+          category: ""
         })
         setRecipes(response)
         props.history.push("/recipes")
       })
       .catch(err => console.log("Error in RecipeForm", err))
-  };
+    };
 
     useEffect(() => {
       axiosWithAuth()
@@ -48,6 +54,7 @@ const RecipeForm = props => {
         })
         .catch(err => console.log("Error in Get Recipes: ", err))
     }, [setRecipes])
+  
 
     const handleDelete = (id) => {
       axiosWithAuth()
@@ -60,7 +67,7 @@ const RecipeForm = props => {
     <form onSubmit={submitForm}>
       <label htmlFor="title">Title</label>
       <input
-        id="title"
+        //id="title"
         type="text"
         onChange={handleChanges}
         placeholder="Add the recipe title"
@@ -68,22 +75,49 @@ const RecipeForm = props => {
         name="title"
       />
      
-      <label htmlFor="body">What & How</label>
+      <label htmlFor="source">Recipe Source</label>
       <textarea
-        id="note"
-        placeholder="Add the ingredients and instructions here."
-        value={recipe.body}
+        //id="source"
+        placeholder="Who did the recipe come from."
+        value={recipe.source}
         onChange={handleChanges}
-        name="body"
+        name="source"
       />
 
-      <label htmlFor="footer">Who Or Where</label>
+      <label htmlFor="ingredients">Ingredients List</label>
       <textarea
-        id="footer"
-        placeholder="Where (place or person) did the recipe come from."
-        value={recipe.footer}
+        //id="ingredients"
+        placeholder="Ingredients for this recipe."
+        value={recipe.ingredients}
         onChange={handleChanges}
-        name="footer"
+        name="ingredients"
+      />
+
+      <label htmlFor="instructions">Recipe Instructions</label>
+      <textarea
+        //id="instructions"
+        placeholder="Instructions for this recipe."
+        value={recipe.instructions}
+        onChange={handleChanges}
+        name="instructions"
+      />
+
+      <label htmlFor="image">Photo(Optional)</label>
+      <textarea
+        //id="image"
+        placeholder="Photo of prepared recipe."
+        value={recipe.image}
+        onChange={handleChanges}
+        name="image"
+      />
+
+      <label htmlFor="category">Recipe Category</label>
+      <textarea
+        //id="category"
+        placeholder="Breakfast, Lunch, Dinner or Snack?"
+        value={recipe.category}
+        onChange={handleChanges}
+        name="category"
       />
 
       <button type="submit">Add Recipe</button>
