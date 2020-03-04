@@ -12,7 +12,7 @@ import "./App.css";
 
 const App = () => {
   const [recipes, setRecipes] = useState([{
-    id: "",
+    //id: "",
     title: "",
     source: "",
     ingredients: "",

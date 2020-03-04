@@ -7,7 +7,7 @@ const RecipeForm = props => {
   
   const { recipes, setRecipes } = useContext(secretFamilyContext)
   const [recipe, setRecipe] = useState({
-    id: Date.now(),
+    //id: Date.now(),
     title: "",
     source: "",
     ingredients: "",
@@ -23,25 +23,25 @@ const RecipeForm = props => {
 
   };
 
-  const addNewRecipe = recipes => {
-    const newRecipe = {
-      id: Date.now(), // gives a unique id
-      title: recipes.title,
-      source: recipes.source,
-      ingredients: recipes.ingredients,
-      instructions: recipes.instructions,
-      image: recipes.image,
-      category: recipes.category
-    }; 
-    setRecipe([...recipe, newRecipe])
-  }
+  // const addNewRecipe = recipes => {
+  //   const newRecipe = {
+  //     id: Date.now(), // gives a unique id
+  //     title: recipes.title,
+  //     source: recipes.source,
+  //     ingredients: recipes.ingredients,
+  //     instructions: recipes.instructions,
+  //     image: recipes.image,
+  //     category: recipes.category
+  //   }; 
+  //   setRecipes([...recipes, newRecipe])
+  // }
 
   const submitForm = event => {
     event.preventDefault();
-    addNewRecipe(recipe);
+    //addNewRecipe(recipes);
     //setRecipe({ title: "", body: "", footer: ""});
     axiosWithAuth()
-      .post("/recipes", recipe)
+      .post("/auth/recipes", recipe)
       .then(response => {
         console.log("post response", response)
         setRecipe({
@@ -52,8 +52,8 @@ const RecipeForm = props => {
           image: "",
           category: ""
         })
-        setRecipes(response)
-        props.history.push("/recipes")
+        setRecipes(response.data)
+        props.history.push("/protected")
       })
       .catch(err => console.log("Error in RecipeForm", err))
     };
