@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 const RecipeForm = props => {
   console.log("RecipeForm Props: ", props)
   
-  const { recipes, setRecipes } = useContext(secretFamilyContext)
+  const { setRecipes } = useContext(secretFamilyContext)
   const [recipe, setRecipe] = useState({
     title: "",
     source: "",

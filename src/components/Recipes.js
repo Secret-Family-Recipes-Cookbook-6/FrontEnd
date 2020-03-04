@@ -1,18 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { secretFamilyContext } from "../context/secretFamilyContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Recipes = props => {
   console.log("Props from Recipes: ", props)
   const { recipes, setRecipes } = useContext(secretFamilyContext)
-  const [recipe, setRecipe] = useState({
-    title: "",
-    source: "",
-    ingredients: "",
-    instructions: "",
-    image: "",
-    category: ""
-  });
+  // const [recipe, setRecipe] = useState({
+  //   title: "",
+  //   source: "",
+  //   ingredients: "",
+  //   instructions: "",
+  //   image: "",
+  //   category: ""
+  // });
 
   const handleDelete = (id) => {
     axiosWithAuth()

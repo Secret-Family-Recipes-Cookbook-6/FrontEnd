@@ -13,14 +13,14 @@ const RecipeList = () => {
                 setRecipes(response.data)
             })
             .catch(err => console.log("Error in RecipeList: ", err))
-    }, [])
+    }, [setRecipes])
 
     return (
         <div>
             <h2>Recipe List</h2>
             {recipes.map(recipeList =>
                 <Recipes
-                 key={recipeList.id}
+                key={recipeList.id}
                 recipe={recipeList}
                  />
             )}
