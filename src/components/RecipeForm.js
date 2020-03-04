@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { secretFamilyContext } from "../context/secretFamilyContext";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const RecipeForm = props => {
+  console.log("RF: ", props)
+  const { recipes, setRecipes } = useContext(secretFamilyContext)
   const [recipe, setRecipe] = useState({
+    id: Date.now(),
     title: "",
     body: "", 
     footer: ""
@@ -16,9 +21,35 @@ const RecipeForm = props => {
 
   const submitForm = event => {
     event.preventDefault();
-    props.addNewRecipe(recipe);
-    setRecipe({ title: "", body: "", footer: ""});
+    //props.addNewRecipe(recipe);
+    //setRecipe({ title: "", body: "", footer: ""});
+    axiosWithAuth()
+      .post(`/recipes`, recipe)
+      .then(response => {
+        setRecipe({
+          title: "",
+          body: "",
+          footer: ""
+        })
+        setRecipes(response.data)
+        props.history.push("/recipes")
+      })
   };
+    useEffect(() => {
+      axiosWithAuth()
+        .get(`/recipes`)
+        .then(response => {
+          console.log("Recipes: ", response)
+          setRecipes(response.data)
+        })
+    }, [setRecipes])
+
+    const handleDelete = (id) => {
+      axiosWithAuth()
+        .delete(`/recipes/${id}`)
+        .then(response => setRecipes(recipe.filter(recipe => recipe.id !== id)))
+        .catch(err => console.log("Error: ", err))
+    }
 
   return (
     <form onSubmit={submitForm}>
@@ -51,6 +82,8 @@ const RecipeForm = props => {
       />
 
       <button type="submit">Add Recipe</button>
+      <br />
+      <button onClick={() => handleDelete(props.recipe.id)}>Delete this recipe</button>
     </form>
   );
 };

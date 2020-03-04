@@ -1,14 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { secretFamilyContext } from "../context/secretFamilyContext";
 
+
 const NewRecipeForm = (props) => {
-    console.log(props)
+    console.log("NRF props: ", props)
     const { recipe, setRecipe } = useContext(secretFamilyContext)
     const [addRecipe, setAddRecipe] = useState({
         id: Date.now(),
         title: "",
-        body: "",
+        body: [],
         footer: ""
     })
 
@@ -23,12 +24,28 @@ const NewRecipeForm = (props) => {
             .then(response => {
                 setAddRecipe({
                     title: "",
-                    body: "",
+                    body: [],
                     footer: ""
                 })
                 setRecipe(response.data)
-                props.history.push("/protected")
+                props.history.push("/recipes")//change this back to protected when endpoints are set.
             })
+    }
+
+        useEffect(() => {
+            axiosWithAuth()
+                .get("/recipes")
+                .then(response => {
+                console.log("Recipes: ", response)
+                setRecipe(response.data)//guessing response - no endpoints yet - KG
+                })
+            }, [setRecipe])
+  
+    const handleDelete = (id) => {
+      axiosWithAuth()
+        .delete(`/recipes/${id}`)
+        .then(response => setRecipe(recipe.filter(recipe => recipe.id !== id)))
+        .catch(err => console.log("Error", err))
     }
 
         return (
@@ -57,6 +74,11 @@ const NewRecipeForm = (props) => {
             />
 
             <button type="submit">Add New Recipe</button>
+            <br />
+            <button onClick={() => {props.history.push(`update-recipe/${props.recipes.id}`)}}>Update this recipe</button>
+            <br />
+            <button onClick={() => handleDelete(props.recipe.id)}>Delete this recipe</button>
+            
         </form>
         </div>
     )

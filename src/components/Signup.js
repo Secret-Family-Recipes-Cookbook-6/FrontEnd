@@ -16,7 +16,7 @@ const Signup = () => {
     const submitForm = e => {
         e.preventDefault()
         console.log(cook)
-        axiosWithAuth
+        axiosWithAuth()
           .post("/data", cook)
           .then(response => {
             console.log(response.data);
@@ -58,7 +58,8 @@ const Signup = () => {
                 value={cook.password}/>
                 </label>
 
-
+                <br />
+				        <button type="submit">Signup</button>
             </form>
         </div>
     );

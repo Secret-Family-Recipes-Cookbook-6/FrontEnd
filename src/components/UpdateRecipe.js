@@ -5,7 +5,7 @@ import axios from "axios";
 const initialRecipe = {
     id: "",
     title: "",
-    body: "",
+    body: [],
     footer: ""
 }
 
@@ -25,7 +25,7 @@ const UpdateRecipe = (props) => {
     }
 
     const handleChange = event => {
-        setItem({...recipes, [event.target.name]: event.target.value })
+        setRecipes({...recipes, [event.target.name]: event.target.value })
     }
 
     return (
