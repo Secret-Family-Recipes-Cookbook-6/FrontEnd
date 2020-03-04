@@ -38,9 +38,9 @@ const App = () => {
     <secretFamilyContext.Provider value={{ recipes, setRecipes }}>
     <Route exact path='/' component={Signup} />
     <Route exact path='/login' component={LogIn}/>
-
-    <Route exact path="/protected" component={RecipeForm} />
-    <ProtectedRoute exact path='/protected' component={Recipes}/>
+      {/* Change to protected Routes once a token is in place */}
+    <Route exact path="/recipeform" component={RecipeForm} />
+    <Route exact path='/recipes' component={Recipes}/>
     
     </secretFamilyContext.Provider>
     </div>
