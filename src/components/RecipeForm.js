@@ -21,8 +21,8 @@ const RecipeForm = props => {
 
   const submitForm = event => {
     event.preventDefault();
-    //props.addNewRecipe(recipe);
-    //setRecipe({ title: "", body: "", footer: ""});
+    props.addNewRecipe(recipe);
+    setRecipe({ title: "", body: "", footer: ""});
     axiosWithAuth()
       .post(`/recipes`, recipe)
       .then(response => {
@@ -32,7 +32,7 @@ const RecipeForm = props => {
           footer: ""
         })
         setRecipes(response.data)
-        props.history.push("/recipes")
+        props.history.push("/recipeform")
       })
   };
     useEffect(() => {
