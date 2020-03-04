@@ -3,6 +3,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { Link } from "react-router-dom";
 
 const LogIn = (props) => {
+	
 	const [ credentials, setCredentials ] = useState({
 		username: "",
 		email: "",
@@ -32,6 +33,7 @@ const LogIn = (props) => {
 				console.log("Login Error: ", err)
 			})
 	}
+
 	return (
 		<div>
 			<form className="recipe-list" onSubmit={handleSubmit}>
