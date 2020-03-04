@@ -45,17 +45,6 @@ const RecipeForm = props => {
       .catch(err => console.log("Error in RecipeForm", err))
     };
 
-    useEffect(() => {
-      axiosWithAuth()
-        .get("/recipes")
-        .then(response => {
-          console.log("Recipes: ", response)
-          setRecipes(response.data)
-        })
-        .catch(err => console.log("Error in Get Recipes: ", err))
-    }, [setRecipes])
-  
-
     const handleDelete = (id) => {
       axiosWithAuth()
         .delete(`/recipes/${id}`)
