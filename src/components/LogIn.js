@@ -6,7 +6,6 @@ const LogIn = (props) => {
 	
 	const [ credentials, setCredentials ] = useState({
 		username: "",
-		email: "",
 		password: ""
 	});
 
@@ -20,10 +19,9 @@ const LogIn = (props) => {
 			.post("/login", credentials)
 			.then(response => {
 				console.log("Login: ", response)
-				localStorage.setItem("token", response.data.payload)
+				localStorage.setItem("token", response.data.token)
 				setCredentials({
 					username: "",
-					email: "",
 					password: ""
 				})
 				props.history.push("/protected")
@@ -44,15 +42,6 @@ const LogIn = (props) => {
 					name="username"
 					onChange={handleChange}
 					value={credentials.username}
-				/>
-				<br />
-				<label htmlFor="email">Email Address: </label>
-				<input 
-					type="text"
-					placeholder="Email Address"
-					name="email"
-					onChange={handleChange}
-					value={credentials.email}
 				/>
 				<br />
 				<label htmlFor='password'>Password: </label>
