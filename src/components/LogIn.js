@@ -25,7 +25,7 @@ const LogIn = (props) => {
 					email: "",
 					password: ""
 				})
-				props.history.push("/login")
+				props.history.push("/protected")
 			})
 			.catch(err => {
 				localStorage.removeItem("token")
