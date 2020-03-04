@@ -3,6 +3,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { Link } from "react-router-dom";
 
 const LogIn = (props) => {
+	
 	const [ credentials, setCredentials ] = useState({
 		username: "",
 		password: ""
@@ -18,7 +19,7 @@ const LogIn = (props) => {
 			.post("/login", credentials)
 			.then(response => {
 				console.log("Login: ", response)
-				localStorage.setItem("token", response.data.payload)
+				localStorage.setItem("token", response.data.token)
 				setCredentials({
 					username: "",
 					password: ""
@@ -27,9 +28,10 @@ const LogIn = (props) => {
 			})
 			.catch(err => {
 				localStorage.removeItem("token")
-				console.log("Error: ", err)
+				console.log("Login Error: ", err)
 			})
 	}
+
 	return (
 		<div>
 			<form className="recipe-list" onSubmit={handleSubmit}>

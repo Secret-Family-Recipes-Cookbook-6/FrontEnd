@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import './components.css';
 
-const Signup = () => {
+const Signup = (props) => {
     const [cook, setCook ] = useState({
-        name: '',
+        username: '',
         email: '',
         password: ''
     })
@@ -18,10 +18,11 @@ const Signup = () => {
         e.preventDefault()
         console.log(cook)
         axiosWithAuth()
-          .post("/data", cook)
+          .post("/register", cook)
           .then(response => {
             console.log(response.data);
             setCook(response.data);
+            props.history.push("/login")
           })
           .catch(error => {
             console.log("Data returned an error", error);
@@ -35,8 +36,8 @@ const Signup = () => {
                <label htmlFor="name">Name:
                 <input 
                 onChange={changeHandler}
-                id="name"
-                name="name"
+                id="username"
+                name="username"
                 type="text"
                 value={cook.name}/>
                 </label>

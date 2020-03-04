@@ -1,61 +1,68 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { secretFamilyContext } from "../context/secretFamilyContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const RecipeForm = props => {
-  console.log("RF: ", props)
+  console.log("RecipeForm Props: ", props)
+  
   const { recipes, setRecipes } = useContext(secretFamilyContext)
   const [recipe, setRecipe] = useState({
     id: Date.now(),
     title: "",
-    body: "", 
-    footer: ""
+    source: "",
+    ingredients: "",
+    instructions: "",
+    image: "",
+    category: ""
   });
 
-
+  console.log("Recipe", recipe)
   const handleChanges = event => {
     console.log("event", event.target.value);
     setRecipe({ ...recipe, [event.target.name]: event.target.value });
 
   };
 
+  const addNewRecipe = recipes => {
+    const newRecipe = {
+      id: Date.now(), // gives a unique id
+      title: recipes.title,
+      source: recipes.source,
+      ingredients: recipes.ingredients,
+      instructions: recipes.instructions,
+      image: recipes.image,
+      category: recipes.category
+    }; 
+    setRecipe([...recipe, newRecipe])
+  }
+
   const submitForm = event => {
     event.preventDefault();
-    //props.addNewRecipe(recipe);
+    addNewRecipe(recipe);
     //setRecipe({ title: "", body: "", footer: ""});
     axiosWithAuth()
-      .post(`/recipes`, recipe)
+      .post("/recipes", recipe)
       .then(response => {
+        console.log("post response", response)
         setRecipe({
           title: "",
-          body: "",
-          footer: ""
+          source: "",
+          ingredients: "",
+          instructions: "",
+          image: "",
+          category: ""
         })
-        setRecipes(response.data)
+        setRecipes(response)
         props.history.push("/recipes")
       })
-  };
-    useEffect(() => {
-      axiosWithAuth()
-        .get(`/recipes`)
-        .then(response => {
-          console.log("Recipes: ", response)
-          setRecipes(response.data)
-        })
-    }, [setRecipes])
-
-    const handleDelete = (id) => {
-      axiosWithAuth()
-        .delete(`/recipes/${id}`)
-        .then(response => setRecipes(recipe.filter(recipe => recipe.id !== id)))
-        .catch(err => console.log("Error: ", err))
-    }
+      .catch(err => console.log("Error in RecipeForm", err))
+    };
 
   return (
     <form onSubmit={submitForm}>
       <label htmlFor="title">Title</label>
       <input
-        id="title"
+        //id="title"
         type="text"
         onChange={handleChanges}
         placeholder="Add the recipe title"
@@ -63,27 +70,52 @@ const RecipeForm = props => {
         name="title"
       />
      
-      <label htmlFor="body">What & How</label>
+      <label htmlFor="source">Recipe Source</label>
       <textarea
-        id="note"
-        placeholder="Add the ingredients and instructions here."
-        value={recipe.body}
+        //id="source"
+        placeholder="Who did the recipe come from."
+        value={recipe.source}
         onChange={handleChanges}
-        name="body"
+        name="source"
       />
 
-      <label htmlFor="footer">Who Or Where</label>
+      <label htmlFor="ingredients">Ingredients List</label>
       <textarea
-        id="footer"
-        placeholder="Where (place or person) did the recipe come from."
-        value={recipe.footer}
+        //id="ingredients"
+        placeholder="Ingredients for this recipe."
+        value={recipe.ingredients}
         onChange={handleChanges}
-        name="footer"
+        name="ingredients"
+      />
+
+      <label htmlFor="instructions">Recipe Instructions</label>
+      <textarea
+        //id="instructions"
+        placeholder="Instructions for this recipe."
+        value={recipe.instructions}
+        onChange={handleChanges}
+        name="instructions"
+      />
+
+      <label htmlFor="image">Photo(Optional)</label>
+      <textarea
+        //id="image"
+        placeholder="Photo of prepared recipe."
+        value={recipe.image}
+        onChange={handleChanges}
+        name="image"
+      />
+
+      <label htmlFor="category">Recipe Category</label>
+      <textarea
+        //id="category"
+        placeholder="Breakfast, Lunch, Dinner or Snack?"
+        value={recipe.category}
+        onChange={handleChanges}
+        name="category"
       />
 
       <button type="submit">Add Recipe</button>
-      <br />
-      <button onClick={() => handleDelete(props.recipe.id)}>Delete this recipe</button>
     </form>
   );
 };
