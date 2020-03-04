@@ -46,6 +46,7 @@ const RecipeForm = props => {
           console.log("Recipes: ", response)
           setRecipes(response.data)
         })
+        .catch(err => console.log("Error in Get Recipes: ", err))
     }, [setRecipes])
 
     const handleDelete = (id) => {
