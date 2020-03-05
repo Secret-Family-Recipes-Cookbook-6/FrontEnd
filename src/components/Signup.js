@@ -56,7 +56,7 @@ const Signup = (props) => {
                 onChange={changeHandler}
                 id="password"
                 name="password"
-                type="text"
+                type="password"
                 value={cook.password}/>
                 </label>
 

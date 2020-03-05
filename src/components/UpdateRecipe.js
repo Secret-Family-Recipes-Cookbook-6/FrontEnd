@@ -25,10 +25,10 @@ const UpdateRecipe = (props) => {
         event.preventDefault();
 
         axiosWithAuth()
-            .put("/auth/recipes", recipe)
+            .put("/auth/recipes", recipes)
             .then(response => {
             console.log("put response", response)
-                setRecipe({
+                setRecipes({
                     title: "",
                     source: "",
                     ingredients: "",
