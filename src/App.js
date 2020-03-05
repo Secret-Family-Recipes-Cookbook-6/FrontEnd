@@ -6,7 +6,7 @@ import { secretFamilyContext } from "../src/context/secretFamilyContext";
 import { Route } from "react-router-dom";
 import LogIn from "./components/LogIn";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import UpdateRecipe from "./components/UpdateRecipe";
 import "./App.css";
 
 
@@ -28,7 +28,8 @@ const App = () => {
     <Route exact path='/login' component={LogIn}/>
       {/* Change to protected Routes once a token is in place */}
     <ProtectedRoute exact path="/protected" component={RecipeForm} />
-    <ProtectedRoute exact path='/protected' component={RecipeList}/>
+    <ProtectedRoute exact path='/protected' component={RecipeList} />
+    <ProtectedRoute exact path='/protected' component={UpdateRecipe} />
     
     </secretFamilyContext.Provider>
     </div>
