@@ -13,6 +13,7 @@ body,
   letter-spacing: 0.2rem;
   font-size: large;
   font-weight: bold;
+
   text-align: center;
   background: url('./images/header.jpg')no-repeat center center;
   background-size: cover;
