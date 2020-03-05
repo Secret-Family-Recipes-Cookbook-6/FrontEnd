@@ -61,7 +61,7 @@ const Signup = (props) => {
                 </label>
 
                 <br />
-				        <button type="submit">Signup</button>
+				        <button type="submit">SIGN UP!</button>
             </form>
         </div>
     );
