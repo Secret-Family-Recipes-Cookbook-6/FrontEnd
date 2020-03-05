@@ -26,6 +26,8 @@ const Recipes = props => {
     <div className="recipe-list">
       
         <div className="recipe">
+
+       
           <h2>{props.recipe.title}</h2>
           <p>{props.recipe.source}</p>
           <p>{props.recipe.ingredients}</p>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialRecipe = {
     title: "",
@@ -12,6 +12,7 @@ const initialRecipe = {
   }
 
 const UpdateRecipe = (props) => {
+    console.log("Update props", props)
     const [recipes, setRecipes] = useState(initialRecipe);
 
     useEffect(() => {
@@ -22,9 +23,30 @@ const UpdateRecipe = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        props.udpateRecipe(recipes)
-        props.history.push("/")
-    }
+
+        axiosWithAuth()
+            .put("/auth/recipes", recipe)
+            .then(response => {
+            console.log("put response", response)
+                setRecipe({
+                    title: "",
+                    source: "",
+                    ingredients: "",
+                    instructions: "",
+                    image: "",
+                    category: ""
+            })
+            setRecipes(response.data)
+            props.history.push("/protected")
+        })
+    .catch(err => console.log("Error in RecipeForm", err))
+  }
+
+        props.updateRecipe(recipes)
+        // props.history.push("/")
+    
+
+    
 
     const handleChange = event => {
         setRecipes({...recipes, [event.target.name]: event.target.value })
