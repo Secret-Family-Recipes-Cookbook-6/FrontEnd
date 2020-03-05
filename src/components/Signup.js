@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import './components.css';
+import { Link } from "react-router-dom";
 
 const Signup = (props) => {
     const [cook, setCook ] = useState({
@@ -32,36 +33,42 @@ const Signup = (props) => {
 
     return (
         <div>
-            <form className='form-container' onSubmit={submitForm}>
-               <label htmlFor="name">Name:
+            <form className="recipe-list" onSubmit={submitForm}>
+              <label className="label" htmlFor="name">Name:
                 <input 
                 onChange={changeHandler}
                 id="username"
                 name="username"
                 type="text"
-                value={cook.name}/>
-                </label>
-
-              <label htmlFor="email">Email:
+                value={cook.name}
+                />
+              </label>
+              <br />
+              <label className="label" htmlFor="email">Email:
                 <input 
                 onChange={changeHandler}
                 id="email"
                 name="email"
                 type="text"
-                value={cook.email}/>
-                </label>
-
-              <label htmlFor="password">Password:
+                value={cook.email}
+                />
+              </label>
+              <br />
+              <label className="label" htmlFor="password">Password:
                 <input 
                 onChange={changeHandler}
                 id="password"
                 name="password"
                 type="text"
-                value={cook.password}/>
-                </label>
+                value={cook.password}
+                />
+              </label>
 
-                <br />
-				        <button type="submit">SIGN UP!</button>
+              <br />
+				      <button type="submit">SIGN UP!</button>
+              <br />
+              Already have an account?
+				      <Link to="/login">Log in here!</Link>
             </form>
         </div>
     );
