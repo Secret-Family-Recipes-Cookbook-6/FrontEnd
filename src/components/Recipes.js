@@ -16,8 +16,7 @@ const Recipes = ({ recipe }) => {
   
   const { recipes, setRecipes } = useContext(secretFamilyContext)
   const [updateRecipe, setUpdateRecipe] = useState(initialRecipe);
-
-
+  
   const handleEdit = recipe => {
     if (updateRecipe.id) {
       axiosWithAuth()
@@ -33,7 +32,6 @@ const Recipes = ({ recipe }) => {
                   category: ""
           })
           setRecipes([...recipes.filter(recipe => recipe.id !== updateRecipe.id), updateRecipe])
-          
       })
           .catch(err => console.log("Error in Recipe", err))
     } else {
@@ -48,7 +46,6 @@ const Recipes = ({ recipe }) => {
       .then(response => {
       setRecipes(recipes.filter(item => item.id !== recipe.id))
       })
-      
       .catch(err => console.log("Error in Delete Function: ", err))
     }
 
