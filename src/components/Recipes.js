@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { secretFamilyContext } from "../context/secretFamilyContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
+import UpdateRecipe from "./UpdateRecipe";
 const Recipes = props => {
   console.log("Props from Recipes: ", props)
   const { recipes, setRecipes } = useContext(secretFamilyContext)
@@ -36,7 +36,7 @@ const Recipes = props => {
           <p>{props.recipe.category}</p>
 
         <button className="delete-button" onClick={() => handleDelete(props.recipe.id)}>Delete this recipe</button>
-
+        <button className="delete-button" onClick={() => <UpdateRecipe />}>Update this recipe</button>
         </div>
 
     </div>

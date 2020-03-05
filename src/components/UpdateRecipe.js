@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useContext } from "react";
+import { secretFamilyContext } from "../context/secretFamilyContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialRecipe = {
@@ -13,26 +13,30 @@ const initialRecipe = {
 
 const UpdateRecipe = (props) => {
     console.log("Update props", props)
+    const { recipes, setRecipes } = useContext(secretFamilyContext);
     const [updateRecipe, setUpdateRecipe] = useState(initialRecipe);
 
-    const handleSubmit = id => {
-        
+    const handleSubmit = recipe => {
+    if (updateRecipe.id) {
         axiosWithAuth()
-            .put(`/auth/recipes/${id}`, updateRecipe)
+            .put(`/auth/recipes/${updateRecipe.id}`, updateRecipe)
             .then(response => {
-            console.log("put response", response)
-            //     setUpdateRecipe({
-            //         title: "",
-            //         source: "",
-            //         ingredients: "",
-            //         instructions: "",
-            //         image: "",
-            //         category: ""
-            // })
-            setUpdateRecipe(...updateRecipe, response.data)
-            props.history.push("/protected")
+                console.log("put response", response)
+                setUpdateRecipe({
+                    title: "",
+                    source: "",
+                    ingredients: "",
+                    instructions: "",
+                    image: "",
+                    category: ""
+            })
+            setRecipes([...recipes.filter(recipe => recipe.id !== updateRecipe), updateRecipe])
+            
         })
             .catch(err => console.log("Error in RecipeForm", err))
+    } else {
+        setUpdateRecipe(recipe)
+    }
   }
 
     const handleChange = event => {
