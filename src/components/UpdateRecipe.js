@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -13,43 +13,30 @@ const initialRecipe = {
 
 const UpdateRecipe = (props) => {
     console.log("Update props", props)
-    const [recipes, setRecipes] = useState(initialRecipe);
+    const [updateRecipe, setUpdateRecipe] = useState(initialRecipe);
 
-    useEffect(() => {
-        axios
-            .get(`/auth/recipes/${props.id}`)
-            .then(response => setRecipes(response.data))
-    }, [props.recipes, props.id])
-
-    const handleSubmit = event => {
-        event.preventDefault();
-
+    const handleSubmit = id => {
+        
         axiosWithAuth()
-            .put("/auth/recipes", recipe)
+            .put(`/auth/recipes/${id}`, updateRecipe)
             .then(response => {
             console.log("put response", response)
-                setRecipe({
-                    title: "",
-                    source: "",
-                    ingredients: "",
-                    instructions: "",
-                    image: "",
-                    category: ""
-            })
-            setRecipes(response.data)
+            //     setUpdateRecipe({
+            //         title: "",
+            //         source: "",
+            //         ingredients: "",
+            //         instructions: "",
+            //         image: "",
+            //         category: ""
+            // })
+            setUpdateRecipe(...updateRecipe, response.data)
             props.history.push("/protected")
         })
-    .catch(err => console.log("Error in RecipeForm", err))
+            .catch(err => console.log("Error in RecipeForm", err))
   }
 
-        props.updateRecipe(recipes)
-        // props.history.push("/")
-    
-
-    
-
     const handleChange = event => {
-        setRecipes({...recipes, [event.target.name]: event.target.value })
+        setUpdateRecipe({...updateRecipe, [event.target.name]: event.target.value })
     }
 
     return (
@@ -62,7 +49,7 @@ const UpdateRecipe = (props) => {
                     name="title"
                     placeholder="Add the recipe title"
                     onChange={handleChange}
-                    value={recipes.title}
+                    value={updateRecipe.title}
                 />
      
             <label htmlFor="source">Recipe Source</label>
@@ -71,7 +58,7 @@ const UpdateRecipe = (props) => {
                     name="source"
                     placeholder="Who did the recipe come from"
                     onChange={handleChange}
-                    value={recipes.source}
+                    value={updateRecipe.source}
                />
 
             <label htmlFor="ingredients">Ingredients List</label>
@@ -80,7 +67,7 @@ const UpdateRecipe = (props) => {
                     name="ingredients"
                     placeholder="Ingredients for this recipe"
                     onChange={handleChange}
-                    value={recipes.ingredients}
+                    value={updateRecipe.ingredients}
                 />
 
             <label htmlFor="instructions">Recipe Instructions</label>
@@ -89,7 +76,7 @@ const UpdateRecipe = (props) => {
                     placeholder="Instructions for this recipe"
                     name="instructions"
                     onChange={handleChange}
-                    value={recipes.instructions}
+                    value={updateRecipe.instructions}
                 />
 
             <label htmlFor="image">Photo(Optional)</label>
@@ -98,7 +85,7 @@ const UpdateRecipe = (props) => {
                     name="image"
                     placeholder="Photo of prepared recipe"
                     onChange={handleChange}
-                    value={recipes.image}
+                    value={updateRecipe.image}
                 />
 
             <label htmlFor="category">Recipe Category</label>
@@ -107,10 +94,10 @@ const UpdateRecipe = (props) => {
                     name="category"
                     placeholder="Breakfast, Lunch, Dinner or Snack?"
                     onChange={handleChange}
-                    value={recipes.category}
+                    value={updateRecipe.category}
                 />
 
-            <button type="submit" onClick={() => {props.history.push(`/auth/recipes/${props.recipes.id}`)}}>Update Recipe</button>
+            <button type="submit" onClick={() => {props.history.push(`/auth/recipes/${props.id}`)}}>Update Recipe</button>
         </form>
         </div>
     )
