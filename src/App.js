@@ -27,9 +27,9 @@ const App = () => {
     <Route exact path='/' component={Signup} />
     <Route exact path='/login' component={LogIn}/>
       {/* Change to protected Routes once a token is in place */}
-    <ProtectedRoute exact path="/protected" component={RecipeForm} />
     <ProtectedRoute exact path='/protected' component={RecipeList} />
-    <ProtectedRoute exact path='/protected' component={UpdateRecipe} />
+    {/* <ProtectedRoute exact path="/protected" component={RecipeForm} /> */}
+
     
     </secretFamilyContext.Provider>
     </div>
