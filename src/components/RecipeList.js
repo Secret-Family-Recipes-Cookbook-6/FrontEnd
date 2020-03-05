@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Recipes from './Recipes';
 import { secretFamilyContext } from "../context/secretFamilyContext";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import Logout from "./Logout";
 
 const RecipeList = () => {
     const { recipes, setRecipes } = useContext(secretFamilyContext)
@@ -18,6 +19,7 @@ const RecipeList = () => {
     return (
         <div>
             <h2>Recipe List</h2>
+            <Logout />
             {recipes.map(recipeList =>
                 <Recipes
                 key={recipeList.id}

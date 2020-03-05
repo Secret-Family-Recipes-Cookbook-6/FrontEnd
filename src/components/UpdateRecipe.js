@@ -1,116 +1,77 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import React, { useContext } from "react";
+import { secretFamilyContext } from "../context/secretFamilyContext";
 
-const initialRecipe = {
-    title: "",
-    source: "",
-    ingredients: "",
-    instructions: "",
-    image: "",
-    category: ""
-  }
-
-const UpdateRecipe = (props) => {
-    console.log("Update props", props)
-    const [recipes, setRecipes] = useState(initialRecipe);
-
-    useEffect(() => {
-        axios
-            .get(`/auth/recipes/${props.id}`)
-            .then(response => setRecipes(response.data))
-    }, [props.recipes, props.id])
-
-    const handleSubmit = event => {
-        event.preventDefault();
-
-        axiosWithAuth()
-            .put("/auth/recipes", recipes)
-            .then(response => {
-            console.log("put response", response)
-                setRecipes({
-                    title: "",
-                    source: "",
-                    ingredients: "",
-                    instructions: "",
-                    image: "",
-                    category: ""
-            })
-            setRecipes(response.data)
-            props.history.push("/protected")
-        })
-    .catch(err => console.log("Error in RecipeForm", err))
-  }
-
-        props.updateRecipe(recipes)
-        // props.history.push("/")
+const UpdateRecipe = ({ updateRecipe, setUpdateRecipe }) => {
     
+    const { recipes, setRecipes } = useContext(secretFamilyContext);
 
-    
+    const handleSubmit = recipe => {
+        recipe.preventDefault();
+        setRecipes([...recipes.filter(recipe => recipe.id !== updateRecipe), updateRecipe])
+    }
 
     const handleChange = event => {
-        setRecipes({...recipes, [event.target.name]: event.target.value })
+        setUpdateRecipe({...updateRecipe, [event.target.name]: event.target.value })
+        console.log(updateRecipe);
     }
 
     return (
     <div>
         <form className="recipe-list" onSubmit={handleSubmit}>
             <h2>Update Recipe</h2>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">New Title</label>
                 <input
                     type="text"
                     name="title"
                     placeholder="Add the recipe title"
                     onChange={handleChange}
-                    value={recipes.title}
+                    value={updateRecipe.title}
                 />
      
-            <label htmlFor="source">Recipe Source</label>
+            <label htmlFor="source">New Source</label>
                 <textarea
                     type="text"
                     name="source"
                     placeholder="Who did the recipe come from"
                     onChange={handleChange}
-                    value={recipes.source}
+                    value={updateRecipe.source}
                />
 
-            <label htmlFor="ingredients">Ingredients List</label>
+            <label htmlFor="ingredients">New Ingredients</label>
                 <textarea
                     type="text"
                     name="ingredients"
                     placeholder="Ingredients for this recipe"
                     onChange={handleChange}
-                    value={recipes.ingredients}
+                    value={updateRecipe.ingredients}
                 />
 
-            <label htmlFor="instructions">Recipe Instructions</label>
+            <label htmlFor="instructions">New Instructions</label>
                 <textarea
                     type="text"
-                    placeholder="Instructions for this recipe"
+                    placeholder="New Recipe Instructions"
                     name="instructions"
                     onChange={handleChange}
-                    value={recipes.instructions}
+                    value={updateRecipe.instructions}
                 />
 
-            <label htmlFor="image">Photo(Optional)</label>
+            <label htmlFor="image">New Photo(Optional)</label>
                 <textarea
                     type="text"
                     name="image"
                     placeholder="Photo of prepared recipe"
                     onChange={handleChange}
-                    value={recipes.image}
+                    value={updateRecipe.image}
                 />
 
-            <label htmlFor="category">Recipe Category</label>
+            <label htmlFor="category">New Category</label>
                 <textarea
                     type="text"
                     name="category"
                     placeholder="Breakfast, Lunch, Dinner or Snack?"
                     onChange={handleChange}
-                    value={recipes.category}
+                    value={updateRecipe.category}
                 />
-
-            <button type="submit" onClick={() => {props.history.push(`/auth/recipes/${props.recipes.id}`)}}>Update Recipe</button>
         </form>
         </div>
     )

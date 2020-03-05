@@ -15,30 +15,13 @@ const RecipeForm = props => {
     category: ""
   });
 
-  console.log("Recipe", recipe)
   const handleChanges = event => {
-    console.log("event", event.target.value);
     setRecipe({ ...recipe, [event.target.name]: event.target.value });
 
   };
 
-  // const addNewRecipe = recipes => {
-  //   const newRecipe = {
-  //     id: Date.now(), // gives a unique id
-  //     title: recipes.title,
-  //     source: recipes.source,
-  //     ingredients: recipes.ingredients,
-  //     instructions: recipes.instructions,
-  //     image: recipes.image,
-  //     category: recipes.category
-  //   }; 
-  //   setRecipes([...recipes, newRecipe])
-  // }
-
   const submitForm = event => {
     event.preventDefault();
-    //addNewRecipe(recipes);
-    //setRecipe({ title: "", body: "", footer: ""});
     axiosWithAuth()
       .post("/auth/recipes", recipe)
       .then(response => {
@@ -87,7 +70,7 @@ const RecipeForm = props => {
         name="ingredients"
       />
 
-      <label htmlFor="instructions">Recipe Instructions</label>
+      <label htmlFor="instructions">Instructions</label>
       <textarea
         //id="instructions"
         placeholder="Instructions for this recipe."
@@ -114,7 +97,7 @@ const RecipeForm = props => {
         name="category"
       />
 
-      <button type="submit">Add Recipe</button>
+      <button className="add-button" type="submit">Add Recipe</button>
     </form>
   );
 };
