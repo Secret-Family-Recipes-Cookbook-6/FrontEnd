@@ -19,7 +19,6 @@ const Recipes = ({ recipe }) => {
 
 
   const handleEdit = recipe => {
-    
     if (updateRecipe.id) {
       axiosWithAuth()
           .put(`/auth/recipes/${updateRecipe.id}`, updateRecipe)
@@ -57,8 +56,9 @@ const Recipes = ({ recipe }) => {
     <div className="recipe-list">
       {recipe.id === updateRecipe.id ? (
         <div className="recipe">
-          {<UpdateRecipe />}
-        </div>
+          {<UpdateRecipe updateRecipe={updateRecipe} setUpdateRecipe={setUpdateRecipe}/>}
+          <button className="delete-button" onClick={() => handleEdit(recipe)}>Save Changes</button>
+          </div>
       ) : (
         <div className="recipe">
           <h2>{recipe.title}</h2>

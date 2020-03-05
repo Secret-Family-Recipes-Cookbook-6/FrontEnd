@@ -2,22 +2,22 @@ import React, { useState, useContext } from "react";
 import { secretFamilyContext } from "../context/secretFamilyContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const initialRecipe = {
-    title: "",
-    source: "",
-    ingredients: "",
-    instructions: "",
-    image: "",
-    category: ""
-  }
-
-const UpdateRecipe = (props) => {
-    console.log("Update props", props)
+const UpdateRecipe = ({ updateRecipe, setUpdateRecipe }) => {
+    
     const { recipes, setRecipes } = useContext(secretFamilyContext);
-    const [updateRecipe, setUpdateRecipe] = useState(initialRecipe);
+
+    const [ editing, setEditing ] = useState(false);
+
+    const editRecipe = (item) => {
+          setEditing(true);
+          setUpdateRecipe({
+              ...item,
+          });
+      };
 
     const handleSubmit = recipe => {
-    if (updateRecipe.id) {
+        recipe.preventDefault();
+        if (updateRecipe.id) {
         axiosWithAuth()
             .put(`/auth/recipes/${updateRecipe.id}`, updateRecipe)
             .then(response => {
@@ -41,6 +41,7 @@ const UpdateRecipe = (props) => {
 
     const handleChange = event => {
         setUpdateRecipe({...updateRecipe, [event.target.name]: event.target.value })
+        console.log(updateRecipe);
     }
 
     return (
@@ -101,7 +102,8 @@ const UpdateRecipe = (props) => {
                     value={updateRecipe.category}
                 />
 
-            <button type="submit" onClick={() => {props.history.push(`/auth/recipes/${props.id}`)}}>Update Recipe</button>
+
+            {/* <button type="submit" onClick={() => {props.history.push(`/auth/recipes/${props.id}`)}}>Update Recipe</button> */}
         </form>
         </div>
     )
