@@ -6,13 +6,12 @@ import RecipeForm from './components/RecipeForm';
 import { Route } from "react-router-dom";
 import LogIn from "./components/LogIn";
 import ProtectedRoute from "./components/ProtectedRoute";
-//import NewRecipeForm from "./components/NewRecipeForm";
+
 import "./App.css";
 
 
 const App = () => {
   const [recipes, setRecipes] = useState([{
-    id: "",
     title: "",
     source: "",
     ingredients: "",

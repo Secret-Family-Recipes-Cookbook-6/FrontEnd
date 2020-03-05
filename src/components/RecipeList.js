@@ -7,7 +7,7 @@ const RecipeList = () => {
     const { recipes, setRecipes } = useContext(secretFamilyContext)
     useEffect(() => {
         axiosWithAuth()
-            .get("/recipes")
+            .get("/auth/recipes")
             .then(response => {
                 console.log("Recipes: ", response)
                 setRecipes(response.data)
