@@ -32,9 +32,9 @@ const Recipes = props => {
           <p>{props.recipe.instructions}</p>
           <p>{props.recipe.image}</p>
           <p>{props.recipe.category}</p>
+        <button className="delete-button" onClick={() => handleDelete(props.recipe.id)}>Delete this recipe</button>
         </div>
 
-        <button onClick={() => handleDelete(props.recipe.id)}>Delete this recipe</button>
     </div>
   );
 };

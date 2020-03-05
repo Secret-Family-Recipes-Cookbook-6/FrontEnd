@@ -9,13 +9,15 @@ body,
 }
 
 .App {
-  font-family: cursive;
+  font-family: 'EB Garamond';
+  letter-spacing: 0.2rem;
+  font-size: large;
+  font-weight: bold;
   text-align: center;
   background: url('./images/header.jpg')no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
-  padding: 32px;
-  letter-spacing: 2px
+  padding-top: 2.5rem;
 }
 .recipe-list {
   display: flex;
@@ -29,6 +31,7 @@ body,
   padding: 10px;
   margin: 16px auto;
   text-align: left;
+  font-size: medium;
 }
 
 h1,
@@ -47,27 +50,37 @@ input, textarea {
   padding: 15px 22px;
   margin: 10px 5px;
   box-sizing: border-box;  
-  border: 1px solid #ff65a3;
+  border: 1px solid black;
   border-radius: 4px;
+  font-weight: bold;
+  font-size: medium;
 }
 button {
-  background: gray;
-  border: 1px solid #ff65a3;
-  padding: 10px 15px;
+  background: black;
+  padding: 14px 30px;
   font-size: 16px;
-  color: #191919;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.12), 0 2px 2px 1px rgba(0, 0, 0, 0.24);
+  color: white;
   transition: all 0.2 ease-in;
+  border-radius: 7px;
+  margin-top: 8px;
 }
 button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24);
-  background: silver;
+  background: transparent;
+  color: black; 
+  border: black; 
+  border: 2px solid black;
 }
 button:active {
-  background: #ff7eb9;
-  box-shadow: inset 0px 0px 5px #ff65a3;
+  background: white;
+  box-shadow: inset 0px 0px 5px black;
   outline: none;
+}
+.delete-button {
+  width: 100%;
+}
+.add-button {
+  margin-bottom: 30px;
 }
 
 label {

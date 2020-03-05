@@ -87,7 +87,7 @@ const RecipeForm = props => {
         name="ingredients"
       />
 
-      <label htmlFor="instructions">Recipe Instructions</label>
+      <label htmlFor="instructions">Instructions</label>
       <textarea
         //id="instructions"
         placeholder="Instructions for this recipe."
@@ -114,7 +114,7 @@ const RecipeForm = props => {
         name="category"
       />
 
-      <button type="submit">Add Recipe</button>
+      <button className="add-button" type="submit">Add Recipe</button>
     </form>
   );
 };
