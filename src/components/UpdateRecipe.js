@@ -17,7 +17,7 @@ const UpdateRecipe = (props) => {
     useEffect(() => {
         axios
             .get(`/auth/recipes/${props.id}`)
-            .then(resonse => setRecipes(response.data))
+            .then(response => setRecipes(response.data))
     }, [props.recipes, props.id])
 
     const handleSubmit = event => {
