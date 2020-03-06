@@ -28,11 +28,12 @@ body,
   background: pink;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 0 5px 2px rgba(0, 0, 0, 0.24);
   width: 100%;
-  max-width: 250px;
+  max-width: 400px;
   padding: 10px;
   margin: 16px auto;
   text-align: left;
   font-size: medium;
+  border-radius: 10px;
 }
 
 h1,
@@ -78,7 +79,7 @@ button:active {
   outline: none;
 }
 .delete-button {
-  width: 100%;
+  width: 50%;
 }
 .add-button {
   margin-bottom: 30px;

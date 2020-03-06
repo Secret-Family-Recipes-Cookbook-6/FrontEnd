@@ -58,10 +58,9 @@ const Signup = (props) => {
                 onChange={changeHandler}
                 id="password"
                 name="password"
-                type="text"
-                value={cook.password}
-                />
-              </label>
+                type="password"
+                value={cook.password}/>
+                </label>
 
               <br />
 				      <button type="submit">SIGN UP!</button>
