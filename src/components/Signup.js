@@ -33,7 +33,7 @@ const Signup = (props) => {
     return (
         <div>
             <form className='form-container' onSubmit={submitForm}>
-               <label htmlFor="name">Name:
+               <label htmlFor="name">Username:
                 <input 
                 onChange={changeHandler}
                 id="username"

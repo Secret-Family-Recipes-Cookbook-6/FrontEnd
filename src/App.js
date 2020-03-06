@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import Signup from './components/Signup'
 import RecipeList from "./components/RecipeList";
 import RecipeForm from './components/RecipeForm';
-//import { secretFamilyContext } from "../src/context/secretFamilyContext";
+import { secretFamilyContext } from "../src/context/secretFamilyContext";
 import { Route } from "react-router-dom";
 import LogIn from "./components/LogIn";
 import ProtectedRoute from "./components/ProtectedRoute";
-import UpdateRecipe from "./components/UpdateRecipe";
 import "./App.css";
 
 
@@ -23,12 +22,12 @@ const App = () => {
   return (
     <div className="App">
       <h1>Family Recipes</h1>
-    {/*<secretFamilyContext.Provider value={{ recipes, setRecipes }}>*/}
+    <secretFamilyContext.Provider value={{ recipes, setRecipes }}> </secretFamilyContext.Provider>
     <Route exact path='/' component={Signup} />
     <Route exact path='/login' component={LogIn}/>
       {/* Change to protected Routes once a token is in place */}
     <ProtectedRoute exact path='/protected' component={RecipeList} />
-    {/* <ProtectedRoute exact path="/protected" component={RecipeForm} /> */}
+    <ProtectedRoute exact path="/protected" component={RecipeForm} /> 
 
     
   </div> //</secretFamilyContext.Provider>
