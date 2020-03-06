@@ -65,8 +65,18 @@ const Recipes = ({ recipe }) => {
           <p>{recipe.image}</p>
           <p>{recipe.category}</p>
 
+<<<<<<< HEAD
+       
+          <h2>{props.recipe.title}</h2>
+          <p>{props.recipe.source}</p>
+          <p>{props.recipe.ingredients}</p>
+          <p>{props.recipe.instructions}</p>
+          <p>{props.recipe.image}</p>
+          <p>{props.recipe.category}</p>
+=======
           <button className="delete-button" onClick={() => handleDelete(recipe)}>Delete this recipe</button>
           <button className="delete-button" onClick={() => handleEdit(recipe)}>Update this recipe</button>
+>>>>>>> de68487c4bc5a48e7529b099cf718719be5fd767
         </div>
           )} 
         
