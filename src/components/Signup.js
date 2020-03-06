@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import './components.css';
 import { Link } from "react-router-dom";
 
 const Signup = (props) => {
