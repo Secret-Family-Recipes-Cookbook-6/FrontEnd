@@ -57,6 +57,7 @@ const Recipes = ({ recipe }) => {
           <button className="delete-button" onClick={() => handleEdit(recipe)}>Save Changes</button>
           </div>
       ) : (
+
         <div className="recipe">
           <h2>{recipe.title}</h2>
           <p>{recipe.source}</p>
@@ -68,11 +69,8 @@ const Recipes = ({ recipe }) => {
           <button className="delete-button" onClick={() => handleDelete(recipe)}>Delete this recipe</button>
           <button className="delete-button" onClick={() => handleEdit(recipe)}>Update this recipe</button>
         </div>
-          )} 
-        
-        
-      </div>
-      
+      )}
+    </div>
   );
 };
 
