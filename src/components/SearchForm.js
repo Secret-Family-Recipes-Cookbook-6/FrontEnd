@@ -12,7 +12,7 @@ const SearchForm = (props) => {
 
     return (
         <div className="search-form">
-            <form onSubmit={onSubmit}>
+            <form className="search-box" onSubmit={onSubmit}>
                 <input
                     name="search"
                     placeholder="Search for a recipe"

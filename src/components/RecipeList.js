@@ -20,9 +20,8 @@ const RecipeList = () => {
 
     return (
         <div>
-        <Logout />
-          {/* <h4>Search Recipes</h4> */}
-          <SearchForm setSearch={setSearch} />
+            <Logout />
+            <SearchForm setSearch={setSearch} />
           
           <br />
           <h2>Recipe List</h2>

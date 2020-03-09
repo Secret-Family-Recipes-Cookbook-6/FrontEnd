@@ -90,3 +90,30 @@ label {
   text-align: left;
   width: 200px;
 }
+
+.logout-button {
+  position: absolute;
+  right: 5%;
+  top: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.logout-button:hover {
+  transform: translateY(-1px);
+  background: white;
+  color: black; 
+  border: black; 
+  border: 2px solid black;
+}
+
+.search-box {
+  position: absolute;
+  right: 11.5%;
+  top: 0;
+  background: transparent;
+  font-size: 1rem;
+  transition: all 0.2 ease-in;
+  /* border-radius: 10px; */
+}
