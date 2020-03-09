@@ -20,9 +20,10 @@ const RecipeList = () => {
 
     return (
         <div>
+        <Logout />
           {/* <h4>Search Recipes</h4> */}
           <SearchForm setSearch={setSearch} />
-          <Logout />
+          
           <br />
           <h2>Recipe List</h2>
           {recipes.filter(recipeList => recipeList.title.toLowerCase().includes(search.toLowerCase()))
