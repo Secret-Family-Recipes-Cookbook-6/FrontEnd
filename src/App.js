@@ -6,7 +6,6 @@ import { secretFamilyContext } from "../src/context/secretFamilyContext";
 import { Route } from "react-router-dom";
 import LogIn from "./components/LogIn";
 import ProtectedRoute from "./components/ProtectedRoute";
-
 import "./App.css";
 
 
@@ -30,9 +29,9 @@ const App = () => {
     <ProtectedRoute exact path='/protected' component={RecipeList} />
     <ProtectedRoute exact path="/protected" component={RecipeForm} />
 
-    
-    </secretFamilyContext.Provider>
-    </div>
+  </secretFamilyContext.Provider>
+  </div> 
+  
   );
 } 
 
