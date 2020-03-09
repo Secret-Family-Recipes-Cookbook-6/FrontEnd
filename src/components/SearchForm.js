@@ -15,7 +15,7 @@ const SearchForm = (props) => {
             <form onSubmit={onSubmit}>
                 <input
                     name="search"
-                    placeholder="Search for recipe"
+                    placeholder="Search for a recipe"
                     onChange={handleChange}
                 />
             </form>
