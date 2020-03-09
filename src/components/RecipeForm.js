@@ -80,7 +80,7 @@ const RecipeForm = props => {
       />
 
       <label htmlFor="image">Photo(Optional)</label>
-      <textarea
+      <img 
         //id="image"
         placeholder="Photo of prepared recipe."
         value={recipe.image}
