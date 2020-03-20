@@ -92,7 +92,7 @@ label {
 
 .logout-button {
   position: absolute;
-  right: 1%;
+  right: 3%;
   top: 0;
   font-size: 1rem;
   font-weight: 500;
@@ -106,12 +106,42 @@ label {
   border: black; 
   border: 2px solid black;
 }
+/* for tablets */
+@media only screen and (min-width: 421px) and (max-width: 1024px) {
+  .logout-button {
+    position: relative;
+    width: 28%; 
+    right: 1%;
+  } 	
+}
+/* for phones */
+@media only screen and (max-width: 420px) {
+  .logout-button {
+    position: relative;
+    width: 40%; 
+  }
+}
 
 .search-box {
   position: absolute;
-  right: 7%;
+  right: 15%;
   top: 0;
   background: transparent;
   font-size: 1rem;
-  transition: all 0.2 ease-in;
+  transition: all 0.2 ease-in;	
+}
+/* for tablets */
+@media only screen and (min-width: 421px) and (max-width: 1024px) {
+  .search-box {
+    position: relative;
+    width: 130%; 
+    right: 16%;
+  } 	
+}
+/* for phones */
+@media only screen and (max-width: 420px) {
+  .search-box {
+    position: relative;
+    width: 124%; 
+  }
 }
