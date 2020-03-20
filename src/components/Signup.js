@@ -28,9 +28,8 @@ const Signup = (props) => {
             console.log("Data returned an error", error);
           });
     }
-    
 
-    return (
+  return (
         <div>
             <form className="recipe-list" onSubmit={submitForm}>
               <label className="label" htmlFor="name">Name:
